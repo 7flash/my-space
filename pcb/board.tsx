@@ -495,29 +495,5 @@ export const AISocBoard = () => (
   </board>
 )
 
-// When run directly: generate circuit JSON + report
-if (import.meta.main) {
-  const circuit = new Circuit()
-  circuit.add(<AISocBoard />)
-  const circuitJson = circuit.getCircuitJson()
-
-  await Bun.write("pcb/circuit.json", JSON.stringify(circuitJson, null, 2))
-
-  const components = circuitJson.filter((e: any) => e.type === "source_component").length
-  const traces = circuitJson.filter((e: any) => e.type === "source_trace").length
-  const errors = circuitJson.filter((e: any) => e.type === "source_failed_to_create_component_error")
-
-  console.log("✅ Circuit JSON generated: pcb/circuit.json")
-  console.log(`   Components: ${components}`)
-  console.log(`   Traces: ${traces}`)
-  if (errors.length > 0) {
-    console.log(`   ⚠️  Errors: ${errors.length}`)
-    errors.forEach((e: any) => console.log(`      - ${e.component_name}: ${e.message.split("Details")[0].trim()}`))
-  }
-  console.log("\nBoard: AllWinner T527 + Gowin GW2A-18 | 120x90mm")
-  console.log("\nExport:")
-  console.log("  npx tscircuit export pcb/board.tsx -f gerbers -o pcb/output/gerbers.zip")
-  console.log("  npx tscircuit export pcb/board.tsx -f pcb-svg -o pcb/output/board.svg")
-  console.log("  npx tscircuit export pcb/board.tsx -f readable-netlist -o pcb/output/netlist.txt")
-  console.log("  npx tscircuit export pcb/board.tsx -f kicad_zip -o pcb/output/kicad.zip")
-}
+// To generate circuit JSON, run separately:
+//   bun run pcb/generate.ts
