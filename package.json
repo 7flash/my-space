@@ -1,0 +1,18 @@
+{
+  "name": "my-space",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@tscircuit/core": "^0.0.1117",
+    "jsx-ai": "../jsx-ai",
+    "smart-agent-ai": "../smart-agent",
+    "tscircuit": "^0.0.1541"
+  }
+}
