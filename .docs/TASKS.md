@@ -18,7 +18,7 @@
 - [ ] **Generate BOM with LCSC part numbers** — Map each component to real LCSC/Digikey parts for assembly.
 - [ ] **Add WiFi/BT module** — RTL8723DS or similar for wireless connectivity.
 - [ ] **Add onboard QSPI PSRAM** — For FPGA AI inference buffer (ESP-PSRAM64H or similar).
-- [ ] **Create GitHub repo and push** — Set up remote, push initial commit.
+- [x] ~~**Create GitHub repo and push**~~ — ✅ DONE. https://github.com/7flash/my-space
 - [ ] **Board silkscreen and labeling** — Add component labels, board name, version, pin labels on GPIO header.
 
 ## 📝 Architecture Notes
