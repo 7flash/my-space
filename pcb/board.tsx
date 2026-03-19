@@ -240,6 +240,14 @@ circuit.add(
     <chip name="J_USBC" footprint="pinrow8" pcb_x="-50mm" pcb_y="35mm"
       pin_labels={{ pin1: "GND", pin2: "VBUS", pin3: "CC1", pin4: "CC2",
         pin5: "DP", pin6: "DN", pin7: "SBU1", pin8: "SBU2" }} />
+    {/* USB-C CC pull-downs: 5.1k to GND = advertise as UFP sink, request 5V */}
+    <resistor name="R_CC1" resistance="5.1k" footprint="0402" pcb_x="-48mm" pcb_y="32mm" />
+    <resistor name="R_CC2" resistance="5.1k" footprint="0402" pcb_x="-46mm" pcb_y="32mm" />
+    <trace from=".R_CC1 > .pin1" to=".J_USBC > .CC1" />
+    <trace from=".R_CC1 > .pin2" to="net.GND" />
+    <trace from=".R_CC2 > .pin1" to=".J_USBC > .CC2" />
+    <trace from=".R_CC2 > .pin2" to="net.GND" />
+    {/* VBUS input protection: schottky + TVS would go here in real design */}
     <trace from=".J_USBC > .VBUS" to=".U_PMIC > .VIN" />
     <trace from=".J_USBC > .VBUS" to="net.VBUS" />
     <trace from=".J_USBC > .GND" to="net.GND" />
@@ -303,23 +311,53 @@ circuit.add(
     <trace from=".J_RJ45 > .VCC" to="net.V3V3" />
 
     {/* === HDMI === */}
-    <chip name="J_HDMI" footprint="pinrow14" pcb_x="50mm" pcb_y="15mm"
+    {/* ESD protection: TPD12S016 (models as chip with pass-through + ESD clamp) */}
+    <chip name="U_HDMI_ESD" footprint="qfn24" pcb_x="45mm" pcb_y="18mm"
+      pin_labels={{
+        pin1: "VCC5V", pin2: "GND",
+        pin3: "IN_D2P", pin4: "IN_D2N", pin5: "IN_D1P", pin6: "IN_D1N",
+        pin7: "IN_D0P", pin8: "IN_D0N", pin9: "IN_CKP", pin10: "IN_CKN",
+        pin11: "OUT_D2P", pin12: "OUT_D2N", pin13: "OUT_D1P", pin14: "OUT_D1N",
+        pin15: "OUT_D0P", pin16: "OUT_D0N", pin17: "OUT_CKP", pin18: "OUT_CKN",
+        pin19: "CEC", pin20: "SCL", pin21: "SDA", pin22: "HPD",
+        pin23: "CT_HPD", pin24: "LS_OE",
+      }} />
+    <trace from=".U_HDMI_ESD > .VCC5V" to="net.V5V" />
+    <trace from=".U_HDMI_ESD > .GND" to="net.GND" />
+    <trace from=".U_HDMI_ESD > .LS_OE" to="net.V3V3" />
+    <capacitor name="C_HESD" capacitance="100nF" footprint="0402" pcb_x="48mm" pcb_y="20mm" />
+    <trace from=".C_HESD > .pin1" to="net.V5V" />
+    <trace from=".C_HESD > .pin2" to="net.GND" />
+
+    {/* SoC -> ESD chip (input side) */}
+    <trace from=".U_SOC > .HTXP2" to=".U_HDMI_ESD > .IN_D2P" />
+    <trace from=".U_SOC > .HTXN2" to=".U_HDMI_ESD > .IN_D2N" />
+    <trace from=".U_SOC > .HTXP1" to=".U_HDMI_ESD > .IN_D1P" />
+    <trace from=".U_SOC > .HTXN1" to=".U_HDMI_ESD > .IN_D1N" />
+    <trace from=".U_SOC > .HTXP0" to=".U_HDMI_ESD > .IN_D0P" />
+    <trace from=".U_SOC > .HTXN0" to=".U_HDMI_ESD > .IN_D0N" />
+    <trace from=".U_SOC > .HTXCP" to=".U_HDMI_ESD > .IN_CKP" />
+    <trace from=".U_SOC > .HTXCN" to=".U_HDMI_ESD > .IN_CKN" />
+    <trace from=".U_SOC > .HCEC" to=".U_HDMI_ESD > .CEC" />
+    <trace from=".U_SOC > .HSCL" to=".U_HDMI_ESD > .SCL" />
+    <trace from=".U_SOC > .HSDA" to=".U_HDMI_ESD > .SDA" />
+    <trace from=".U_SOC > .HHPD" to=".U_HDMI_ESD > .CT_HPD" />
+
+    {/* ESD chip -> HDMI connector (output side) */}
+    <chip name="J_HDMI" footprint="pinrow14" pcb_x="55mm" pcb_y="15mm"
       pin_labels={{ pin1: "D2P", pin2: "D2N", pin3: "D1P", pin4: "D1N",
         pin5: "D0P", pin6: "D0N", pin7: "CKP", pin8: "CKN",
         pin9: "CEC", pin10: "SCL", pin11: "SDA", pin12: "HPD",
         pin13: "V5V", pin14: "GND" }} />
-    <trace from=".J_HDMI > .D2P" to=".U_SOC > .HTXP2" />
-    <trace from=".J_HDMI > .D2N" to=".U_SOC > .HTXN2" />
-    <trace from=".J_HDMI > .D1P" to=".U_SOC > .HTXP1" />
-    <trace from=".J_HDMI > .D1N" to=".U_SOC > .HTXN1" />
-    <trace from=".J_HDMI > .D0P" to=".U_SOC > .HTXP0" />
-    <trace from=".J_HDMI > .D0N" to=".U_SOC > .HTXN0" />
-    <trace from=".J_HDMI > .CKP" to=".U_SOC > .HTXCP" />
-    <trace from=".J_HDMI > .CKN" to=".U_SOC > .HTXCN" />
-    <trace from=".J_HDMI > .CEC" to=".U_SOC > .HCEC" />
-    <trace from=".J_HDMI > .SCL" to=".U_SOC > .HSCL" />
-    <trace from=".J_HDMI > .SDA" to=".U_SOC > .HSDA" />
-    <trace from=".J_HDMI > .HPD" to=".U_SOC > .HHPD" />
+    <trace from=".U_HDMI_ESD > .OUT_D2P" to=".J_HDMI > .D2P" />
+    <trace from=".U_HDMI_ESD > .OUT_D2N" to=".J_HDMI > .D2N" />
+    <trace from=".U_HDMI_ESD > .OUT_D1P" to=".J_HDMI > .D1P" />
+    <trace from=".U_HDMI_ESD > .OUT_D1N" to=".J_HDMI > .D1N" />
+    <trace from=".U_HDMI_ESD > .OUT_D0P" to=".J_HDMI > .D0P" />
+    <trace from=".U_HDMI_ESD > .OUT_D0N" to=".J_HDMI > .D0N" />
+    <trace from=".U_HDMI_ESD > .OUT_CKP" to=".J_HDMI > .CKP" />
+    <trace from=".U_HDMI_ESD > .OUT_CKN" to=".J_HDMI > .CKN" />
+    <trace from=".U_HDMI_ESD > .HPD" to=".J_HDMI > .HPD" />
     <trace from=".J_HDMI > .V5V" to="net.V5V" />
     <trace from=".J_HDMI > .GND" to="net.GND" />
 

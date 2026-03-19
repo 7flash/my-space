@@ -42,3 +42,4 @@ pcb/bom.csv
 # secrets
 .config.toml
 .env.*
+agichip/
