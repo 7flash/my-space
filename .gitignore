@@ -36,6 +36,7 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 # PCB generated output
 pcb/circuit.json
 pcb/test.json
+pcb/output/
 pcb/gerbers/
 pcb/bom.csv
 

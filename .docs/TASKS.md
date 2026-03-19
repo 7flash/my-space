@@ -13,7 +13,8 @@
 - [ ] **Add thermal relief and ground plane** — 6-layer stackup definition needed for proper impedance control.
 
 ## 🟢 Priority: Features
-- [ ] **Export Gerbers and send to fab** — Run `npx tsci export --format gerber` and validate output, upload to JLCPCB/PCBWay.
+- [x] ~~**Export Gerbers and send to fab**~~ — ✅ DONE. Gerbers (2.7MB), PCB SVG, netlist, and KiCad zip all exported to `pcb/output/`. Ready for JLCPCB/PCBWay upload.
+- [ ] **Upload Gerbers to JLCPCB/PCBWay** — Upload `pcb/output/gerbers.zip`, configure 6-layer stackup, ENIG finish, 1oz copper.
 - [ ] **Generate BOM with LCSC part numbers** — Map each component to real LCSC/Digikey parts for assembly.
 - [ ] **Add WiFi/BT module** — RTL8723DS or similar for wireless connectivity.
 - [ ] **Add onboard QSPI PSRAM** — For FPGA AI inference buffer (ESP-PSRAM64H or similar).
@@ -36,11 +37,18 @@
 
 ### Commands
 ```bash
-bun run pcb/board.tsx              # Generate circuit JSON
-npx tsci dev pcb/board.tsx         # Interactive viewer
-npx tsci export --format gerber    # Gerber export for fab
-npx tsci export --format bom      # Bill of materials
+bun run pcb/board.tsx                                                     # Generate circuit JSON
+npx tscircuit export pcb/board.tsx -f pcb-svg -o output/board.svg         # PCB layout SVG
+npx tscircuit export pcb/board.tsx -f gerbers -o output/gerbers.zip       # Gerbers for fab
+npx tscircuit export pcb/board.tsx -f readable-netlist -o output/netlist.txt  # Netlist
+npx tscircuit export pcb/board.tsx -f kicad_zip -o output/kicad.zip       # KiCad project
 ```
+
+### Exported Files (pcb/output/)
+- `board.svg` — 419KB PCB layout visualization
+- `gerbers.zip` — 2.7MB Gerber files ready for fab upload
+- `kicad.zip` — 5.8MB KiCad project for manual routing/editing
+- `netlist.txt` — 35KB readable component + net list
 
 ### Power Rails
 | Rail | Voltage | Source | Feeds |
