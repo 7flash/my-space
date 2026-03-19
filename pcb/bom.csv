@@ -1,0 +1,59 @@
+Designator,Component,Package,Value,Quantity,LCSC Part,Description,Unit Price (est)
+U_PMIC,AXP717,QFN-40,N/A,1,C5446498,AllWinner companion PMIC multi-rail,$2.50
+U_SOC,AllWinner T527,BGA-256,N/A,1,N/A - direct from AllWinner,Octa Cortex-A55 SoC with 2TOPS NPU,$12.00
+U_FPGA,Gowin GW2A-18,BGA-256,N/A,1,C2343442,GW2A-LV18PG256C8/I7 FPGA 18K LUT,$8.50
+U_RAM,LPDDR4 2GB,BGA-200,N/A,1,C5197498,Samsung K4F4E164HE-BI 16Gbit LPDDR4,$6.00
+U_EMMC,eMMC 32GB,BGA-153,N/A,1,C2686640,Samsung KLMBG2JETD-B041 32GB eMMC 5.1,$5.50
+U_FLASH,W25Q128JVSIQ,SOIC-8,128Mbit,1,C97521,Winbond 128Mbit SPI NOR Flash,$0.45
+U_ETH,RTL8211F-CG,QFN-48,N/A,1,C69264,Realtek Gigabit Ethernet PHY RGMII,$1.80
+U_HDMI_ESD,TPD12S016PWR,QFN-24,N/A,1,C128645,TI HDMI ESD protection + level shifter,$1.20
+U_FREG,AP2112K-1.0,SOT-23,1.0V,1,C51118,Diodes Inc 600mA LDO 1.0V fixed,$0.15
+U_BOOST,TPS61021A,SOT-23,5V,1,C131383,TI 5V boost converter 3.6A,$1.10
+J_USBC,USB-C 16P SMD,USB-C,N/A,1,C168688,USB Type-C 16-pin receptacle,$0.35
+J_USB3,USB-A 3.0 Female,USB-A,N/A,1,C46407,USB 3.0 Type-A receptacle 9-pin,$0.40
+J_RJ45,HR911105A,RJ45+Magnetics,N/A,1,C12074,HanRun RJ45 MagJack w/ integrated transformer,$1.20
+J_HDMI,HDMI-A 19P,HDMI-A,N/A,1,C138388,HDMI Type-A female 19-pin SMD,$0.55
+J_CSI,FPC 15-pin 1mm,FPC,N/A,1,C262667,15-pin FPC connector 1mm pitch bottom contact,$0.20
+J_SD,MicroSD Push-Push,MicroSD,N/A,1,C585353,MicroSD card slot push-push type,$0.30
+J_UART,Pin Header 1x4,2.54mm,N/A,1,C706517,1x4 2.54mm male pin header,$0.05
+J_JTAG,Pin Header 1x6,2.54mm,N/A,1,C706519,1x6 2.54mm male pin header,$0.06
+J_GPIO,Pin Header 2x20,2.54mm,N/A,1,C50982,2x20 2.54mm male pin header,$0.25
+SW1,Tactile Switch,6x6mm,N/A,1,C318884,6x6x4.3mm tactile push button,$0.03
+SW2,Tactile Switch,6x6mm,N/A,1,C318884,6x6x4.3mm tactile push button,$0.03
+LED1,Green LED,0603,Green,1,C72043,0603 green LED 20mA,$0.02
+LED2,Blue LED,0603,Blue,1,C72041,0603 blue LED 20mA,$0.02
+LED3,Red LED,0603,Red,1,C2286,0603 red LED 20mA,$0.02
+R1,Resistor,0402,4.7kΩ,1,C25900,0402 4.7kΩ 1% resistor,$0.002
+R2,Resistor,0402,4.7kΩ,1,C25900,0402 4.7kΩ 1% resistor,$0.002
+R_CC1,Resistor,0402,5.1kΩ,1,C25905,0402 5.1kΩ 1% resistor,$0.002
+R_CC2,Resistor,0402,5.1kΩ,1,C25905,0402 5.1kΩ 1% resistor,$0.002
+R_ERST,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+R_TCK,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+R_TMS,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+R_RST,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+R_PROG,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+R_INIT,Resistor,0402,10kΩ,1,C25744,0402 10kΩ 1% resistor,$0.002
+RL1,Resistor,0402,1kΩ,1,C11702,0402 1kΩ 1% resistor,$0.002
+RL2,Resistor,0402,1kΩ,1,C11702,0402 1kΩ 1% resistor,$0.002
+RL3,Resistor,0402,1kΩ,1,C11702,0402 1kΩ 1% resistor,$0.002
+C1,Capacitor,0805,22µF,1,C45783,0805 22µF 10V X5R ceramic,$0.03
+C2,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+C3,Capacitor,0805,22µF,1,C45783,0805 22µF 10V X5R ceramic,$0.03
+C4,Capacitor,0805,22µF,1,C45783,0805 22µF 10V X5R ceramic,$0.03
+C5,Capacitor,0805,10µF,1,C15850,0805 10µF 16V X5R ceramic,$0.02
+C6,Capacitor,0805,10µF,1,C15850,0805 10µF 16V X5R ceramic,$0.02
+C7,Capacitor,0805,10µF,1,C15850,0805 10µF 16V X5R ceramic,$0.02
+C8,Capacitor,0805,22µF,1,C45783,0805 22µF 10V X5R ceramic,$0.03
+C10,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+C11,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+C12,Capacitor,0805,4.7µF,1,C1779,0805 4.7µF 16V X5R ceramic,$0.01
+CX1,Capacitor,0402,18pF,1,C1478,0402 18pF 50V C0G/NP0,$0.005
+CX2,Capacitor,0402,18pF,1,C1478,0402 18pF 50V C0G/NP0,$0.005
+CF1,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+CF2,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+CF3,Capacitor,0805,4.7µF,1,C1779,0805 4.7µF 16V X5R ceramic,$0.01
+CF4,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+CR1,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+CR2,Capacitor,0805,4.7µF,1,C1779,0805 4.7µF 16V X5R ceramic,$0.01
+C_HESD,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005
+C_RST,Capacitor,0402,100nF,1,C1525,0402 100nF 16V X7R ceramic,$0.005

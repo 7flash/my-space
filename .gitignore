@@ -38,7 +38,7 @@ pcb/circuit.json
 pcb/test.json
 pcb/output/
 pcb/gerbers/
-pcb/bom.csv
+# pcb/bom.csv is tracked (not ignored)
 
 # secrets
 .config.toml
